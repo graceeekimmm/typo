@@ -103,6 +103,7 @@ class Article < Content
       article
     end
 
+
     def search_with_pagination(search_hash, paginate_hash)
       
       state = (search_hash[:state] and ["no_draft", "drafts", "published", "withdrawn", "pending"].include? search_hash[:state]) ? search_hash[:state] : 'no_draft'
@@ -121,6 +122,16 @@ class Article < Content
     end
 
   end
+
+  def merge_with(article_id)
+    article = Article.find(article_id)
+    new_body = self.body + article.body
+    self.body = new_body
+    self.comments = self.comments + article.comments
+    self.save!
+    Article.find(article_id).delete
+  end
+
 
   def year_url
     published_at.year.to_s
