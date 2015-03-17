@@ -240,4 +240,12 @@ class Admin::ContentController < Admin::BaseController
   def setup_resources
     @resources = Resource.by_created_at
   end
+
+  def merge
+    @merge_to = Article.find(params[:id])
+    @merge_this = Article.find(params[:merge_with])
+    @merge_to.merge_with(@merge_this)
+    redirect_to('/admin/content')
+  end
+
 end

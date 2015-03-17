@@ -9,7 +9,7 @@ Feature: Create Blog
     And I should see "My Shiny Weblog!"
 
   Scenario: Create blog page not shown when blog created
-    Given the blog is set up
+    Given that the blog is set up
     When I am on the home page
     Then I should not see "My Shiny Weblog!"
     And I should see "Teh Blag"

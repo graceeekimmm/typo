@@ -4,7 +4,7 @@ Feature: Write Articles
   I want to be able to add articles to my blog
 
   Background:
-    Given the blog is set up
+    Given that the blog is set up
     And I am logged into the admin panel
 
   Scenario: Successfully write articles
