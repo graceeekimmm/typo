@@ -1,0 +1,29 @@
+Feature: Create/edit categories
+  As a blogger
+  In order to organize articles by categories
+  I want to be able to create/edit categories
+
+Background:
+    Given that the blog is set up
+    And I am logged into the admin panel
+    When I follow "Categories"
+
+Scenario: The view renders
+  Then I should see "Categories"
+  And I should see "Name"
+  And I should see "Keywords"
+  And I should see "Permalink"
+  And I should see "Description"
+
+Scenario: Create a category
+  When I fill in "Name" with "fruit"
+  And I press "Save"
+  Then I should see "no articles"
+
+Scenario: Edit a category
+  When I follow "General"
+  And I fill in "Description" with "anything, everything, all things"
+  And I press "Save"
+  Then I should see "anything"
+  And I should see "everything"
+  And I shold see "all things"
